@@ -1,0 +1,437 @@
+<html>
+    <head>
+    <style>
+        body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #006992; 
+  background-image: url("https://static.vecteezy.com/system/resources/previews/020/040/404/non_2x/multi-layers-blue-color-texture-3d-papercut-layers-in-gradient-banner-abstract-paper-cut-art-background-design-for-website-template-topography-map-concept-or-smooth-origami-paper-cut-vector.jpg");
+  color: #eaeaea; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+header {
+  width: 100%;
+  height: 70px;
+  top: 0;
+  color: #ffffff;
+  background-color: rgba(0, 251, 255, 0.2);
+  margin: 0;
+  position: fixed;
+  text-align: center;
+  padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.quiz-container {
+  max-width: 550px;
+  width: 100%;
+  padding: 20px;
+  margin-top: 110px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.question {
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+  color: #ffffff;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.feedback {
+  margin-top: 20px;
+  font-size: 1.1rem;
+}
+
+.controls {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.control-button {
+  padding: 12px 25px;
+  background-color: #00adb5;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.control-button:hover {
+  background-color: #5dd9dd;
+  transform: scale(1.05);
+}
+
+.control-button:disabled {
+  background-color: #666666;
+  cursor: not-allowed;
+}
+
+.option-button {
+  padding: 15px;
+  background-color: #444444;
+  color: #ffffff;
+  border: 1px solid #00adb5;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.option-button:hover {
+  background-color: #5dd9dd;
+  transform: translateY(-3px);
+}
+
+.option-button:disabled {
+  background-color: #333333;
+  cursor: not-allowed;
+}
+
+.progress-bar {
+  height: 10px;
+  width: 100%;
+  background-color: #444444;
+  border-radius: 5px;
+  margin: 20px 0;
+  position: relative;
+}
+
+.progress-bar > .progress {
+  height: 100%;
+  background-color: #00adb5;
+  border-radius: 5px;
+  width: 0%;
+  transition: width 0.4s ease;
+}
+
+.score {
+  margin-top: 20px;
+  font-size: 1.3rem;
+  color: #00adb5;
+}
+
+    </style>
+
+    </head>
+    <body>
+<header>
+    <h2>Hello Abhimanyu! Welcome to your ML quiz designed by Shubham!!!</h2>
+  </header>
+  <div class="quiz-container">
+    <div class="question" id="question">Loading question...</div>
+    <div class="options" id="options"></div>
+    <div class="feedback" id="feedback"></div>
+    <div class="progress-bar">
+      <div class="progress" id="progress-bar"></div>
+    </div>
+    <div class="score" id="score">Score: 0 / 20</div>
+    <div class="controls">
+      <button class="control-button" id="prev-btn" disabled>Prev</button>
+      <button class="control-button" id="next-btn" disabled>Next</button>
+    </div>
+  </div>
+  <script>
+const questions = [
+  {
+    type: "true/false",
+    question: "Supervised learning can be used when there are no labeled data available",
+    answer: "False",
+    insight: "Supervised learning requires labeled data to train the model, while unsupervised learning handles unlabeled data."
+  },
+  {
+    type: "true/false",
+    question: "Does a convolutional neural network (CNN) primarily use convolution layers to extract spatial features from images?",
+    answer: "True",
+    insight: "CNNs are designed to process image data by applying convolution layers to detect spatial hierarchies and features like edges, textures, and objects."
+  },
+  {
+    type: "multiple",
+    question: "Which of the following are activation functions commonly used in neural networks?",
+    options: ["ReLU", "Sigmoid", "Softmax", "All of the above"],
+    answer: "All of the above",
+    insight: "ReLU is used to introduce non-linearity, Sigmoid squashes output to a range between 0 and 1, and Softmax is often used for classification tasks."
+  },
+  {
+    type: "true/false",
+    question: "Is overfitting more likely to occur when the model is too simple?",
+    answer: "False",
+    insight: "Overfitting occurs when a model is too complex and learns the noise in the training data, instead of the actual underlying patterns."
+  },
+  {
+    type: "multiple",
+    question: "What is the primary purpose of dropout in neural networks?",
+    options: [
+      "To add noise to the input data",
+      "To prevent overfitting by randomly deactivating neurons during training",
+      "To increase the learning rate",
+      "To improve feature scaling"
+    ],
+    answer: "To prevent overfitting by randomly deactivating neurons during training",
+    insight: "Dropout improves generalization by preventing the network from relying too heavily on specific neurons."
+  },
+  {
+    type: "multiple",
+    question: "Which of the following are loss functions used in regression?",
+    options: [
+      "Mean Squared Error (MSE)",
+      "Mean Absolute Error (MAE)",
+      "Cross-Entropy Loss",
+      "Both A and B"
+    ],
+    answer: "Both A and B",
+    insight: "MSE and MAE are popular loss functions for regression, while Cross-Entropy Loss is typically used in classification."
+  },
+  {
+    type: "multiple",
+    question: "Which of the following algorithms is NOT used for unsupervised learning?",
+    options: ["K-Means", "DBSCAN", "Linear Regression", "PCA"],
+    answer: "Linear Regression",
+    insight: "Linear regression is a supervised learning algorithm, while K-Means, DBSCAN, and PCA are common unsupervised methods."
+  },
+  {
+    type: "true/false",
+    question: "Does overfitting occur when a model performs well on training data but poorly on unseen data?",
+    answer: "True",
+    insight: "Overfitting happens when the model captures noise or patterns specific to the training data, failing to generalize to new data."
+  },
+  {
+    type: "multiple",
+    question: "Which technique is often used to address the vanishing gradient problem in deep neural networks?",
+    options: [
+      "Using sigmoid activation functions",
+      "Using gradient clipping",
+      "Using ReLU activation functions",
+      "Both B and C"
+    ],
+    answer: "Both B and C",
+    insight: "Gradient clipping prevents exploding gradients, while ReLU activation functions mitigate vanishing gradients by keeping gradients alive for positive values."
+  },
+  {
+    type: "true/false",
+    question: "Is transfer learning an approach where a pre-trained model is reused for a new, related task?",
+    answer: "True",
+    insight: "Transfer learning leverages a model trained on one task to improve performance on a different, but related, task by fine-tuning."
+  },
+  {
+    type: "multiple",
+    question: "Which technique is commonly used to handle imbalanced datasets?",
+    options: [
+      "Oversampling",
+      "Undersampling",
+      "Synthetic Minority Oversampling Technique (SMOTE)",
+      "All of the above"
+    ],
+    answer: "All of the above",
+    insight: "Oversampling, undersampling, and SMOTE are popular techniques for dealing with imbalanced datasets."
+  },
+  {
+    type: "multiple",
+    question: "Which of the following techniques are used for hyperparameter tuning?",
+    options: [
+      "Grid Search",
+      "Random Search",
+      "Bayesian Optimization",
+      "All of the above"
+    ],
+    answer: "All of the above",
+    insight: "Grid Search, Random Search, and Bayesian Optimization are common methods for finding optimal hyperparameters in ML models."
+  },
+  {
+    type: "multiple",
+    question: "Which of these are popular techniques to prevent overfitting?",
+    options: ["Dropout", "Early Stopping", "Data Augmentation", "All of the above"],
+    answer: "All of the above",
+    insight: "Dropout, early stopping, and data augmentation are widely used to combat overfitting in deep learning models."
+  },
+  {
+    type: "multiple",
+    question: "Which of these are kernel functions used in SVMs?",
+    options: ["Linear", "Polynomial", "Radial Basis Function (RBF)", "All of the above"],
+    answer: "All of the above",
+    insight: "SVMs use kernels like linear, polynomial, and RBF to project data into higher-dimensional spaces for better separability."
+  },
+  {
+    type: "true/false",
+    question: "Is Cross-Validation used to evaluate model performance on unseen data?",
+    answer: "True",
+    insight: "Cross-validation splits data into training and validation sets multiple times to evaluate model performance and generalizability."
+  },
+  {
+    type: "multiple",
+    question: "What is the key difference between Decision Trees and Random Forests?",
+    options: ["Random Forest is an ensemble of Decision Trees", "Random Forest uses a single decision tree", "Decision Trees are less prone to overfitting", "Random Forest is faster to train"],
+    answer: "Random Forest is an ensemble of Decision Trees",
+    insight: "Random Forests use multiple decision trees to reduce overfitting, while individual decision trees are more prone to overfitting."
+  },
+  {
+    type: "true/false",
+    question: "Is Principal Component Analysis (PCA) primarily used for feature selection in supervised learning?",
+    answer: "False",
+    insight: "PCA is an unsupervised method for dimensionality reduction, not feature selection. It creates new, orthogonal features (principal components)."
+  },
+  {
+    type: "true/false",
+    question: "Is the term 'deep learning' used to describe neural networks with only one hidden layer?",
+    answer: "False",
+    insight: "'Deep learning' refers to neural networks with multiple hidden layers, enabling them to learn hierarchical feature representations."
+  }, 
+  {
+    type: "multiple",
+    question: "What is the primary role of the hidden layer in a neural network?",
+    options: ["Feature extraction", "Output prediction", "Data preprocessing", "Optimization"],
+    answer: "Feature extraction",
+    insight: "The hidden layer extracts and transforms input features into more abstract representations, which helps the network make better predictions."
+  },
+  {
+    type: "true/false",
+    question: "Is the Naive Bayes algorithm based on the principle of conditional probability?",
+    answer: "True",
+    insight: "Naive Bayes uses Bayes' Theorem and assumes independence between features, making it efficient for classification tasks, especially with text data."
+  },
+];
+
+    
+    let currentIndex = 0;
+    let score = 0;
+    const totalQuestions = questions.length;
+    
+    // Track whether each question has been answered
+    const answeredQuestions = new Array(totalQuestions).fill(false);
+    
+    const questionContainer = document.getElementById("question");
+    const optionsContainer = document.getElementById("options");
+    const feedbackContainer = document.getElementById("feedback");
+    const scoreContainer = document.getElementById("score");
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const progressBar = document.getElementById("progress-bar");
+    
+    function loadQuestion(index) {
+      optionsContainer.innerHTML = "";
+      feedbackContainer.textContent = "";
+    
+      const currentQuestion = questions[index];
+      questionContainer.textContent = `${index + 1}. ${currentQuestion.question}`;
+    
+      prevBtn.disabled = index === 0;
+      nextBtn.disabled = !answeredQuestions[index];
+      
+      if (currentQuestion.type === "multiple") {
+        currentQuestion.options.forEach((option) => {
+          const button = document.createElement("button");
+          button.textContent = option;
+          button.classList.add("option-button");
+          button.disabled = answeredQuestions[index]; 
+          button.addEventListener("click", () =>
+            handleAnswer(
+              option,
+              currentQuestion.answer,
+              currentQuestion.insight,
+              button
+            )
+          );
+          optionsContainer.appendChild(button);
+        });
+      } else {
+        ["True", "False"].forEach((option) => {
+          const button = document.createElement("button");
+          button.textContent = option;
+          button.classList.add("option-button");
+          button.disabled = answeredQuestions[index]; 
+          button.addEventListener("click", () =>
+            handleAnswer(
+              option,
+              currentQuestion.answer,
+              currentQuestion.insight,
+              button
+            )
+          );
+          optionsContainer.appendChild(button);
+        });
+      }
+    
+      updateProgress();
+    
+      if (answeredQuestions[index]) {
+        feedbackContainer.textContent = `You already answered this question.`;
+        feedbackContainer.style.color = "gray";
+      }
+    }
+    
+    function handleAnswer(selected, correct, insight, button) {
+      const buttons = optionsContainer.querySelectorAll("button");
+      buttons.forEach((btn) => (btn.disabled = true)); 
+    
+      if (!answeredQuestions[currentIndex]) {
+        if (selected === correct) {
+          score++;
+          feedbackContainer.textContent = `Correct! ${insight}`;
+          feedbackContainer.style.color = "green";
+          button.style.backgroundColor = "#28a745"; 
+        } else {
+          feedbackContainer.textContent = `Wrong! The correct answer is: "${correct}". ${insight}`;
+          feedbackContainer.style.color = "red";
+          button.style.backgroundColor = "#dc3545";
+        }
+        answeredQuestions[currentIndex] = true; 
+      }
+    
+      nextBtn.disabled = false; 
+      updateScore();
+    }
+    
+    function updateProgress() {
+      const progress = ((currentIndex + 1) / totalQuestions) * 100;
+      progressBar.style.width = `${progress}%`;
+    }
+    
+    function updateScore() {
+      scoreContainer.textContent = `Score: ${score} / ${totalQuestions}`;
+    }
+    
+    prevBtn.addEventListener("click", () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        loadQuestion(currentIndex);
+      }
+    });
+    
+    nextBtn.addEventListener("click", () => {
+      if (currentIndex < totalQuestions - 1) {
+        currentIndex++;
+        loadQuestion(currentIndex);
+      } else {
+        questionContainer.textContent = "Quiz Complete!";
+        optionsContainer.innerHTML = "";
+        feedbackContainer.textContent = `Final Score: ${score} / ${totalQuestions}`;
+        nextBtn.disabled = true;
+      }
+    });
+    
+    loadQuestion(currentIndex);
+    
+        </script>
+</body>
+</html>
+  
