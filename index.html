@@ -153,145 +153,152 @@ header {
   </div>
   <script>
 const questions = [
+{
+    type: "multiple",
+    question: "Which keyword is used to define a function in Python?",
+    options: ["function", "def", "lambda", "define"],
+    answer: "def",
+    insight: "Python uses the 'def' keyword to define functions, followed by the function name and parameters."
+  },
+  {
+    type: "multiple",
+    question: "Which of the following is NOT a valid Python variable name?",
+    options: ["my_var", "2ndVar", "_hiddenVar", "camelCaseVar"],
+    answer: "2ndVar",
+    insight: "Variable names cannot start with a number in Python, making '2ndVar' invalid."
+  },{
+    type: "multiple",
+    question: "Which statement is used to exit a loop in Python?",
+    options: ["continue", "break", "pass", "return"],
+    answer: "break",
+    insight: "The 'break' statement immediately exits the loop, whereas 'continue' skips the current iteration."
+  },
+  {
+    type: "multiple",
+    question: "Which module is used to generate random numbers in Python?",
+    options: ["random", "math", "os", "sys"],
+    answer: "random",
+    insight: "The 'random' module provides functions to generate random numbers, shuffle sequences, and sample data."
+  },
   {
     type: "true/false",
-    question: "Is tokenization the process of splitting text into meaningful units such as words or sentences?",
+    question: "Are Python dictionaries ordered?",
     answer: "True",
-    insight: "Tokenization is a fundamental step in NLP that breaks text into words, phrases, or sentences."
+    insight: "As of Python 3.7+, dictionaries maintain insertion order, making them ordered collections."
+  },
+  {
+    type: "multiple",
+    question: "Which of the following is NOT a built-in Python function?",
+    options: ["len()", "sqrt()", "type()", "sum()"],
+    answer: "sqrt()",
+    insight: "'sqrt()' is available in the 'math' module, but it's not a built-in function."
+  },
+  {
+    type: "multiple",
+    question: "Which keyword is used to handle exceptions in Python?",
+    options: ["catch", "try", "except", "finally"],
+    answer: "except",
+    insight: "'except' is used with 'try' to handle exceptions in Python."
   },
   {
     type: "true/false",
-    question: "Are stopwords the most important words in a sentence and should always be retained for NLP tasks?",
-    answer: "False",
-    insight: "Stopwords are common words (e.g., 'is,' 'the,' 'and') that are often removed to reduce noise in text analysis."
-  },
-  {
-    type: "true/false",
-    question: "Does lemmatization reduce words to their root form by considering the meaning and grammatical structure?",
+    question: "Is indentation required in Python?",
     answer: "True",
-    insight: "Lemmatization uses linguistic rules to convert words to their base forms (e.g., 'running' → 'run')."
+    insight: "Python uses indentation to define blocks of code, replacing traditional braces found in other languages."
+  },
+  {
+    type: "multiple",
+    question: "Which of the following can be used to create an anonymous function in Python?",
+    options: ["lambda", "def", "functools", "map"],
+    answer: "lambda",
+    insight: "The 'lambda' keyword is used to define anonymous functions in Python."
+  },
+  {
+    type: "multiple",
+    question: "Which of these functions is used to check the data type of a variable?",
+    options: ["typeof()", "type()", "isinstance()", "Both type() and isinstance()"],
+    answer: "Both type() and isinstance()",
+    insight: "'type()' returns the data type, while 'isinstance()' checks if a variable is an instance of a specific class."
+  },
+  {
+    type: "multiple",
+    question: "Which method is used to add an element to a list?",
+    options: ["insert()", "add()", "push()", "append()"],
+    answer: "append()",
+    insight: "The 'append()' method adds an element to the end of a list, while 'insert()' can add at a specific index."
   },
   {
     type: "true/false",
-    question: "Is Named Entity Recognition (NER) used to identify and classify proper nouns in text, such as people, locations, and organizations?",
+    question: "Is Python case-sensitive?",
     answer: "True",
-    insight: "NER extracts entities like names, dates, and locations from text, which is useful for structured information extraction."
+    insight: "Python distinguishes between uppercase and lowercase letters in variable names and functions."
+  },
+  {
+    type: "multiple",
+    question: "Which of the following statements correctly creates a dictionary?",
+    options: ["{1, 2, 3}", "{'a': 1, 'b': 2}", "['a', 'b', 'c']", "(1, 2, 3)"],
+    answer: "{'a': 1, 'b': 2}",
+    insight: "Dictionaries are created using key-value pairs enclosed in curly braces."
   },
   {
     type: "true/false",
-    question: "Does TF-IDF (Term Frequency-Inverse Document Frequency) assign higher weights to words that appear frequently in all documents?",
-    answer: "False",
-    insight: "TF-IDF assigns higher weights to words that appear frequently in a single document but are rare across the entire corpus."
-  },
-  {
-    type: "multiple",
-    question: "Which of the following is NOT an NLP preprocessing technique?",
-    options: ["Tokenization", "Stemming", "Normalization", "Random Forest"],
-    answer: "Random Forest",
-    insight: "Random Forest is a machine learning algorithm, whereas the other options are common NLP preprocessing techniques."
-  },
-  {
-    type: "multiple",
-    question: "What is the primary purpose of Part-of-Speech (POS) tagging?",
-    options: [
-      "Convert words to their base forms",
-      "Assign grammatical categories to words",
-      "Remove unnecessary words",
-      "Translate text into another language"
-    ],
-    answer: "Assign grammatical categories to words",
-    insight: "POS tagging labels words based on their role in a sentence, such as noun, verb, or adjective."
-  },
-  {
-    type: "multiple",
-    question: "Which NLP technique is used to determine if a text expresses positive, negative, or neutral sentiment?",
-    options: ["Stemming", "Sentiment Analysis", "Dependency Parsing", "Speech Recognition"],
-    answer: "Sentiment Analysis",
-    insight: "Sentiment analysis helps understand the emotional tone of text, often used in social media monitoring and reviews."
-  },
-  {
-    type: "multiple",
-    question: "Which of these is a common language model architecture used in NLP?",
-    options: ["ResNet", "BERT", "VGG", "AlexNet"],
-    answer: "BERT",
-    insight: "BERT (Bidirectional Encoder Representations from Transformers) is a powerful NLP model developed by Google for contextual understanding."
-  },
-  {
-    type: "true/false",
-    question: "Does word embedding represent words as high-dimensional vectors to capture their meaning?",
+    question: "Can Python variables be declared without specifying their type?",
     answer: "True",
-    insight: "Word embeddings like Word2Vec and GloVe transform words into dense vector representations, preserving semantic relationships."
+    insight: "Python is dynamically typed, meaning variables do not require explicit type declarations."
+  },
+  {
+    type: "multiple",
+    question: "Which of the following is NOT a valid Python loop control statement?",
+    options: ["continue", "break", "pass", "repeat"],
+    answer: "repeat",
+    insight: "Python does not have a 'repeat' loop; it uses 'for' and 'while' loops instead."
+  },
+  {
+    type: "multiple",
+    question: "Which operator is used for exponentiation in Python?",
+    options: ["^", "**", "exp()", "//"],
+    answer: "**",
+    insight: "The '**' operator is used for exponentiation in Python (e.g., 2**3 = 8)."
+  },
+  {
+    type: "multiple",
+    question: "Which built-in module is used for regular expressions in Python?",
+    options: ["regex", "re", "regexp", "pattern"],
+    answer: "re",
+    insight: "Python provides the 're' module for working with regular expressions."
   },
   {
     type: "true/false",
-    question: "Does stemming always produce valid English words?",
-    answer: "False",
-    insight: "Stemming removes suffixes based on simple rules, which can lead to non-standard words (e.g., 'running' → 'run' but 'studies' → 'studi')."
-  },
-  {
-    type: "true/false",
-    question: "Can word embeddings capture semantic relationships between words?",
+    question: "Does Python support anonymous functions?",
     answer: "True",
-    insight: "Word embeddings like Word2Vec and GloVe map words into vector space where similar words are close together."
+    insight: "Python supports anonymous functions using the 'lambda' keyword."
+  },
+  {
+    type: "multiple",
+    question: "Which of these functions can be used to get the length of a string in Python?",
+    options: ["length()", "len()", "size()", "count()"],
+    answer: "len()",
+    insight: "The 'len()' function returns the number of characters in a string or the number of elements in a collection."
+  },
+  {
+    type: "multiple",
+    question: "Which method is used to remove an element from a dictionary?",
+    options: ["remove()", "delete()", "pop()", "discard()"],
+    answer: "pop()",
+    insight: "'pop()' removes a key-value pair from a dictionary and returns the value."
   },
   {
     type: "true/false",
-    question: "Does Bag of Words (BoW) consider the order of words in a document?",
-    answer: "False",
-    insight: "BoW represents text as word frequency vectors, ignoring the order of words."
-  },
-  {
-    type: "multiple",
-    question: "Which of the following techniques helps reduce the dimensionality of text data?",
-    options: ["TF-IDF", "One-Hot Encoding", "Word2Vec", "Principal Component Analysis (PCA)"],
-    answer: "Principal Component Analysis (PCA)",
-    insight: "PCA is a technique used to reduce dimensions in feature space, including text representations."
-  },
-  {
-    type: "multiple",
-    question: "Which of the following is a challenge in NLP?",
-    options: [
-      "Ambiguity in language",
-      "Understanding sarcasm",
-      "Dealing with multiple languages",
-      "All of the above"
-    ],
-    answer: "All of the above",
-    insight: "NLP faces challenges such as ambiguity, sarcasm detection, and multilingual processing."
-  },
-  {
-    type: "multiple",
-    question: "Which of the following NLP models is known for its attention mechanism?",
-    options: ["LSTM", "GRU", "Transformer", "Naive Bayes"],
-    answer: "Transformer",
-    insight: "Transformers use self-attention to capture dependencies across long sequences, improving NLP performance."
-  },
-  {
-    type: "true/false",
-    question: "Does transfer learning allow pre-trained language models to be fine-tuned for new NLP tasks?",
+    question: "Can a Python function return a function?",
     answer: "True",
-    insight: "Transfer learning enables models like BERT and GPT to adapt to new NLP tasks by fine-tuning on domain-specific data."
+    insight: "Functions are first-class objects in Python, meaning they can be returned from other functions."
   },
   {
     type: "multiple",
-    question: "Which of the following are applications of Named Entity Recognition (NER)?",
-    options: ["Extracting company names from news articles", "Identifying product names in reviews", "Finding dates in historical texts", "All of the above"],
-    answer: "All of the above",
-    insight: "NER identifies proper nouns like names, locations, and dates, making it useful in multiple domains."
-  },
-  {
-    type: "multiple",
-    question: "Which of these tasks is NOT typically performed in NLP?",
-    options: ["Speech recognition", "Image segmentation", "Sentiment analysis", "Machine translation"],
-    answer: "Image segmentation",
-    insight: "Image segmentation is a computer vision task, whereas speech recognition, sentiment analysis, and machine translation are core NLP tasks."
-  },
-  {
-    type: "multiple",
-    question: "Which approach is commonly used for topic modeling?",
-    options: ["LDA", "K-means", "DBSCAN", "PCA"],
-    answer: "LDA",
-    insight: "Latent Dirichlet Allocation (LDA) is a probabilistic model used to discover topics in large text corpora."
+    question: "Which of these is NOT a valid Python loop?",
+    options: ["for loop", "while-do loop", "do-while loop", "Both for and while loops"],
+    answer: "do-while loop",
+    insight: "Python does not have a built-in do-while loop, but it can be simulated using a while loop."
   },
 ];
 
