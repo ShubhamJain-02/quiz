@@ -145,7 +145,7 @@ header {
     <div class="progress-bar">
       <div class="progress" id="progress-bar"></div>
     </div>
-    <div class="score" id="score">Score: 0 / 20</div>
+    <div class="score" id="score">Score: 0 / 22</div>
     <div class="controls">
       <button class="control-button" id="prev-btn" disabled>Prev</button>
       <button class="control-button" id="next-btn" disabled>Next</button>
@@ -155,150 +155,148 @@ header {
 const questions = [
 {
     type: "multiple",
-    question: "Which keyword is used to define a function in Python?",
-    options: ["function", "def", "lambda", "define"],
-    answer: "def",
-    insight: "Python uses the 'def' keyword to define functions, followed by the function name and parameters."
-  },
-  {
-    type: "multiple",
-    question: "Which of the following is NOT a valid Python variable name?",
-    options: ["my_var", "2ndVar", "_hiddenVar", "camelCaseVar"],
-    answer: "2ndVar",
-    insight: "Variable names cannot start with a number in Python, making '2ndVar' invalid."
-  },{
-    type: "multiple",
-    question: "Which statement is used to exit a loop in Python?",
-    options: ["continue", "break", "pass", "return"],
-    answer: "break",
-    insight: "The 'break' statement immediately exits the loop, whereas 'continue' skips the current iteration."
-  },
-  {
-    type: "multiple",
-    question: "Which module is used to generate random numbers in Python?",
-    options: ["random", "math", "os", "sys"],
-    answer: "random",
-    insight: "The 'random' module provides functions to generate random numbers, shuffle sequences, and sample data."
+    question: "Which of the following models is best suited for sequential text processing?",
+    options: ["CNN", "RNN", "SVM", "Decision Tree"],
+    answer: "RNN",
+    insight: "Recurrent Neural Networks (RNNs) are designed for sequential data like text and time series."
   },
   {
     type: "true/false",
-    question: "Are Python dictionaries ordered?",
+    question: "Does feature scaling improve the performance of gradient-based optimization algorithms?",
     answer: "True",
-    insight: "As of Python 3.7+, dictionaries maintain insertion order, making them ordered collections."
+    insight: "Feature scaling helps gradient-based optimizers converge faster by normalizing feature magnitudes."
   },
   {
     type: "multiple",
-    question: "Which of the following is NOT a built-in Python function?",
-    options: ["len()", "sqrt()", "type()", "sum()"],
-    answer: "sqrt()",
-    insight: "'sqrt()' is available in the 'math' module, but it's not a built-in function."
-  },
-  {
-    type: "multiple",
-    question: "Which keyword is used to handle exceptions in Python?",
-    options: ["catch", "try", "except", "finally"],
-    answer: "except",
-    insight: "'except' is used with 'try' to handle exceptions in Python."
+    question: "Which of the following are common loss functions in deep learning?",
+    options: ["Mean Squared Error", "Cross-Entropy", "Huber Loss", "All of the above"],
+    answer: "All of the above",
+    insight: "MSE is used for regression, Cross-Entropy for classification, and Huber Loss is a robust loss function."
   },
   {
     type: "true/false",
-    question: "Is indentation required in Python?",
+    question: "Can LSTMs handle long-term dependencies better than traditional RNNs?",
     answer: "True",
-    insight: "Python uses indentation to define blocks of code, replacing traditional braces found in other languages."
+    insight: "LSTMs use memory cells and gates to retain long-term dependencies, solving the vanishing gradient problem in RNNs."
   },
   {
     type: "multiple",
-    question: "Which of the following can be used to create an anonymous function in Python?",
-    options: ["lambda", "def", "functools", "map"],
-    answer: "lambda",
-    insight: "The 'lambda' keyword is used to define anonymous functions in Python."
-  },
-  {
-    type: "multiple",
-    question: "Which of these functions is used to check the data type of a variable?",
-    options: ["typeof()", "type()", "isinstance()", "Both type() and isinstance()"],
-    answer: "Both type() and isinstance()",
-    insight: "'type()' returns the data type, while 'isinstance()' checks if a variable is an instance of a specific class."
-  },
-  {
-    type: "multiple",
-    question: "Which method is used to add an element to a list?",
-    options: ["insert()", "add()", "push()", "append()"],
-    answer: "append()",
-    insight: "The 'append()' method adds an element to the end of a list, while 'insert()' can add at a specific index."
+    question: "Which Python library provides pre-trained word embeddings?",
+    options: ["Gensim", "NLTK", "Scikit-learn", "Matplotlib"],
+    answer: "Gensim",
+    insight: "Gensim offers pre-trained word embeddings like Word2Vec and FastText for NLP tasks."
   },
   {
     type: "true/false",
-    question: "Is Python case-sensitive?",
+    question: "Are dropout layers used to reduce overfitting in neural networks?",
     answer: "True",
-    insight: "Python distinguishes between uppercase and lowercase letters in variable names and functions."
+    insight: "Dropout randomly disables neurons during training, reducing overfitting by preventing reliance on specific neurons."
   },
   {
     type: "multiple",
-    question: "Which of the following statements correctly creates a dictionary?",
-    options: ["{1, 2, 3}", "{'a': 1, 'b': 2}", "['a', 'b', 'c']", "(1, 2, 3)"],
-    answer: "{'a': 1, 'b': 2}",
-    insight: "Dictionaries are created using key-value pairs enclosed in curly braces."
+    question: "Which algorithm is commonly used for text classification?",
+    options: ["Naive Bayes", "Random Forest", "K-Means", "DBSCAN"],
+    answer: "Naive Bayes",
+    insight: "Naive Bayes is widely used for text classification due to its efficiency with high-dimensional data."
   },
   {
     type: "true/false",
-    question: "Can Python variables be declared without specifying their type?",
-    answer: "True",
-    insight: "Python is dynamically typed, meaning variables do not require explicit type declarations."
+    question: "Does bag-of-words (BoW) capture the order of words in a sentence?",
+    answer: "False",
+    insight: "BoW represents text as a set of word occurrences but does not preserve word order."
   },
   {
     type: "multiple",
-    question: "Which of the following is NOT a valid Python loop control statement?",
-    options: ["continue", "break", "pass", "repeat"],
-    answer: "repeat",
-    insight: "Python does not have a 'repeat' loop; it uses 'for' and 'while' loops instead."
+    question: "Which metric is NOT typically used for evaluating classification models?",
+    options: ["Accuracy", "Precision", "Recall", "Mean Squared Error"],
+    answer: "Mean Squared Error",
+    insight: "MSE is used for regression problems, while Accuracy, Precision, and Recall evaluate classification models."
   },
   {
     type: "multiple",
-    question: "Which operator is used for exponentiation in Python?",
-    options: ["^", "**", "exp()", "//"],
-    answer: "**",
-    insight: "The '**' operator is used for exponentiation in Python (e.g., 2**3 = 8)."
-  },
-  {
-    type: "multiple",
-    question: "Which built-in module is used for regular expressions in Python?",
-    options: ["regex", "re", "regexp", "pattern"],
-    answer: "re",
-    insight: "Python provides the 're' module for working with regular expressions."
+    question: "Which of these algorithms is commonly used for dimensionality reduction?",
+    options: ["PCA", "t-SNE", "Autoencoders", "All of the above"],
+    answer: "All of the above",
+    insight: "PCA, t-SNE, and Autoencoders are all used for reducing the number of features in a dataset."
   },
   {
     type: "true/false",
-    question: "Does Python support anonymous functions?",
+    question: "Does Stemming reduce words to their root form?",
     answer: "True",
-    insight: "Python supports anonymous functions using the 'lambda' keyword."
+    insight: "Stemming removes suffixes from words to reduce them to their root form, though it may not always produce meaningful words."
   },
   {
     type: "multiple",
-    question: "Which of these functions can be used to get the length of a string in Python?",
-    options: ["length()", "len()", "size()", "count()"],
-    answer: "len()",
-    insight: "The 'len()' function returns the number of characters in a string or the number of elements in a collection."
+    question: "Which function is used to split data into training and testing sets in Scikit-learn?",
+    options: ["train_test_split", "split_data", "test_split", "data_partition"],
+    answer: "train_test_split",
+    insight: "The `train_test_split` function is used to divide datasets into training and testing subsets for model evaluation."
   },
   {
     type: "multiple",
-    question: "Which method is used to remove an element from a dictionary?",
-    options: ["remove()", "delete()", "pop()", "discard()"],
-    answer: "pop()",
-    insight: "'pop()' removes a key-value pair from a dictionary and returns the value."
+    question: "Which of the following is NOT a loss function used in deep learning?",
+    options: ["Cross-Entropy", "Mean Squared Error", "Hinge Loss", "Gradient Descent"],
+    answer: "Gradient Descent",
+    insight: "Gradient Descent is an optimization algorithm, whereas Cross-Entropy, MSE, and Hinge Loss are loss functions."
   },
   {
     type: "true/false",
-    question: "Can a Python function return a function?",
+    question: "Can Python dictionaries have duplicate keys?",
+    answer: "False",
+    insight: "Python dictionaries cannot have duplicate keys; assigning a new value to an existing key overwrites the old value."
+  },
+  {
+    type: "true/false",
+    question: "Can Python lists store multiple data types?",
     answer: "True",
-    insight: "Functions are first-class objects in Python, meaning they can be returned from other functions."
+    insight: "Python lists are heterogeneous, meaning they can store multiple data types including integers, strings, and even other lists."
   },
   {
     type: "multiple",
-    question: "Which of these is NOT a valid Python loop?",
-    options: ["for loop", "while-do loop", "do-while loop", "Both for and while loops"],
-    answer: "do-while loop",
-    insight: "Python does not have a built-in do-while loop, but it can be simulated using a while loop."
+    question: "Which of the following is an ensemble learning method?",
+    options: ["Random Forest", "Decision Tree", "K-Means", "Linear Regression"],
+    answer: "Random Forest",
+    insight: "Random Forest is an ensemble method that combines multiple decision trees to improve prediction accuracy."
+  },
+  {
+    type: "multiple",
+    question: "Which technique is used to handle missing values in a dataset?",
+    options: ["Mean Imputation", "Removing Missing Rows", "Predicting Missing Values", "All of the above"],
+    answer: "All of the above",
+    insight: "Handling missing values can be done using different techniques like imputation, row removal, or prediction based on other features."
+  },
+  {
+    type: "true/false",
+    question: "Are stopwords removed in POS tagging improve NLP model performance?",
+    answer: "False",
+    insight: "Stopwords (common words like 'the', 'is', 'and') are not removed in POS Tagging as they help to distinguish between parts of speech."
+  },
+  {
+    type: "multiple",
+    question: "Which function is used to reshape NumPy arrays?",
+    options: ["reshape()", "resize()", "change_shape()", "Both reshape() and resize()"],
+    answer: "Both reshape() and resize()",
+    insight: "Both `reshape()` and `resize()` modify array dimensions, but `reshape()` returns a new array, while `resize()` modifies the existing array in place."
+  },
+  {
+    type: "true/false",
+    question: "Do LSTMs suffer from the vanishing gradient problem?",
+    answer: "False",
+    insight: "LSTMs use gating mechanisms to mitigate the vanishing gradient problem, unlike standard RNNs."
+  },
+  {
+    type: "multiple",
+    question: "Which loss function is used for binary classification?",
+    options: ["Mean Squared Error", "Cross-Entropy Loss", "Hinge Loss", "Categorical Cross-Entropy"],
+    answer: "Cross-Entropy Loss",
+    insight: "Cross-Entropy Loss is commonly used for binary classification, while Categorical Cross-Entropy is used for multi-class classification."
+  },
+  {
+    type: "multiple",
+    question: "Which optimizer is commonly used in deep learning?",
+    options: ["SGD", "Adam", "RMSprop", "All of the above"],
+    answer: "All of the above",
+    insight: "SGD, Adam, and RMSprop are popular optimizers for training deep learning models."
   },
 ];
 
