@@ -136,7 +136,7 @@ header {
     </head>
     <body>
 <header>
-    <h2>Hello Abhimanyu! Long time no see!!!!! Welcome to your ML quiz designed by your greatest friend Shubham!!!</h2>
+    <h2>Hello Abhimanyu! Welcome to your difficult ML quiz designed by your greatest friend Shubham :) !!!</h2>
   </header>
   <div class="quiz-container">
     <div class="question" id="question">Loading question...</div>
@@ -145,7 +145,7 @@ header {
     <div class="progress-bar">
       <div class="progress" id="progress-bar"></div>
     </div>
-    <div class="score" id="score">Score: 0 / 23</div>
+    <div class="score" id="score">Score: 0 / 20</div>
     <div class="controls">
       <button class="control-button" id="prev-btn" disabled>Prev</button>
       <button class="control-button" id="next-btn" disabled>Next</button>
@@ -153,161 +153,143 @@ header {
   </div>
   <script>
 const questions = [
-  // NLP Questions
+{
+    type: "multiple",
+    question: "Which loss function is most suitable for training a language model using token-level predictions?",
+    options: ["Cross-Entropy Loss", "Huber Loss", "Hinge Loss", "Mean Squared Error"],
+    answer: "Cross-Entropy Loss",
+    insight: "Cross-entropy loss is commonly used for classification tasks, including token prediction in language models."
+  },
+  {
+    type: "multiple",
+    question: "Which of the following is NOT a subword tokenization technique?",
+    options: ["WordPiece", "Byte Pair Encoding (BPE)", "Unigram LM", "Skip-Gram"],
+    answer: "Skip-Gram",
+    insight: "Skip-Gram is a Word2Vec model for learning word embeddings, not a subword tokenization method."
+  },
   {
     type: "true/false",
-    question: "Is tokenization a mandatory preprocessing step in NLP?",
+    question: "In sequence-to-sequence models, teacher forcing is used to prevent exposure bias.",
     answer: "True",
-    insight: "Tokenization helps break down text into smaller units, making it easier for models to process."
+    insight: "Teacher forcing feeds the correct previous output during training to improve convergence but can lead to inference mismatches."
   },
   {
     type: "multiple",
-    question: "Which model is widely used for machine translation?",
-    options: ["LSTM", "BERT", "Transformer", "CNN"],
-    answer: "Transformer",
-    insight: "The Transformer model, introduced in 'Attention Is All You Need', is widely used for tasks like machine translation."
+    question: "Which of the following is NOT a component of the Transformer model?",
+    options: ["Multi-Head Attention", "LSTM Layers", "Feedforward Network", "Layer Normalization"],
+    answer: "LSTM Layers",
+    insight: "Transformers replace LSTMs with self-attention mechanisms for parallelizable sequence processing."
   },
   {
     type: "true/false",
-    question: "Word2Vec generates word embeddings based on word frequency alone.",
+    question: "The bias-variance tradeoff states that increasing model complexity always reduces error.",
     answer: "False",
-    insight: "Word2Vec generates word embeddings using context-based learning techniques like Skip-gram and CBOW."
+    insight: "Too much complexity can lead to overfitting, increasing variance while reducing bias."
   },
   {
     type: "multiple",
-    question: "Which technique is used for sentiment analysis?",
-    options: ["TF-IDF", "LSTM", "BERT", "All of the above"],
+    question: "Which assumption is NOT required for linear regression to work effectively?",
+    options: ["Linearity", "Multicollinearity", "Homoscedasticity", "Independence of errors"],
+    answer: "Multicollinearity",
+    insight: "While multicollinearity affects interpretability, it is not a strict assumption for model correctness."
+  },
+  {
+    type: "multiple",
+    question: "Which of the following architectures is best suited for modeling long-term dependencies in sequential data?",
+    options: ["RNN", "CNN", "LSTM", "Fully Connected Network"],
+    answer: "LSTM",
+    insight: "LSTMs include memory gates that allow them to capture long-term dependencies better than vanilla RNNs."
+  },
+  {
+    type: "true/false",
+    question: "Word embeddings trained using Word2Vec can handle out-of-vocabulary (OOV) words.",
+    answer: "False",
+    insight: "Word2Vec generates fixed embeddings during training, meaning it cannot dynamically generate embeddings for new words. Subword models like FastText address this limitation."
+  },
+  {
+    type: "multiple",
+    question: "In an encoder-decoder model, what role does the attention mechanism play?",
+    options: ["It compresses input into a fixed-size vector", "It dynamically selects relevant parts of the input sequence", "It prevents vanishing gradients", "It reduces computational complexity"],
+    answer: "It dynamically selects relevant parts of the input sequence",
+    insight: "Attention allows the decoder to focus on relevant sections of the input instead of relying on a single fixed context vector."
+  },
+  {
+    type: "true/false",
+    question: "Gradient boosting models are more prone to overfitting than bagging models.",
+    answer: "True",
+    insight: "Boosting sequentially corrects errors, making it more powerful but also more susceptible to overfitting if not regularized properly."
+  },
+  {
+    type: "multiple",
+    question: "Which assumption is critical for applying Principal Component Analysis (PCA)?",
+    options: ["Data should be normally distributed", "Data should be linearly correlated", "Data should have equal variance across features", "Data should be categorical"],
+    answer: "Data should be linearly correlated",
+    insight: "PCA is most effective when features are linearly correlated, as it projects data onto orthogonal principal components."
+  },
+  {
+    type: "multiple",
+    question: "Which activation function is best suited for deep networks to mitigate vanishing gradients?",
+    options: ["Sigmoid", "Tanh", "ReLU", "Softmax"],
+    answer: "ReLU",
+    insight: "ReLU prevents vanishing gradients by maintaining a linear regime for positive inputs, unlike Sigmoid and Tanh."
+  },
+  {
+    type: "multiple",
+    question: "What is the primary reason for using dropout in neural networks?",
+    options: ["To increase computational efficiency", "To improve gradient flow", "To prevent overfitting", "All of the above"],
+    answer: "To prevent overfitting",
+    insight: "Dropout randomly deactivates neurons during training, reducing dependency on specific features and enhancing generalization."
+  },
+  {
+    type: "true/false",
+    question: "A Python set maintains insertion order of elements.",
+    answer: "False",
+    insight: "Python sets are unordered collections, meaning element order is not guaranteed."
+  },
+  {
+    type: "multiple",
+    question: "Which Python feature allows functions to accept an arbitrary number of keyword arguments?",
+    options: ["*args", "**kwargs", "lambda functions", "list comprehensions"],
+    answer: "**kwargs",
+    insight: "**kwargs allows passing multiple keyword arguments as a dictionary to a function."
+  },
+  {
+    type: "multiple",
+    question: "Which of the following statements about Python’s garbage collection is correct?",
+    options: [
+      "Python uses reference counting for memory management",
+      "Circular references are automatically collected",
+      "The `gc` module can be used to control garbage collection",
+      "All of the above"
+    ],
     answer: "All of the above",
-    insight: "TF-IDF, LSTMs, and BERT are commonly used for sentiment analysis in NLP."
-  },
-
-  // Encoder-Decoder Models
-  {
-    type: "true/false",
-    question: "In an encoder-decoder model, the decoder generates output tokens without depending on the encoder’s context.",
-    answer: "False",
-    insight: "The decoder relies on the encoder's context to generate meaningful output, especially in tasks like machine translation."
-  },
-  {
-    type: "multiple",
-    question: "Which mechanism helps encoder-decoder models handle long sequences effectively?",
-    options: ["Dropout", "Batch Normalization", "Attention", "Gradient Clipping"],
-    answer: "Attention",
-    insight: "The Attention mechanism helps models focus on important parts of the input sequence, improving performance on long texts."
+    insight: "Python primarily uses reference counting but has a garbage collector (`gc` module) to handle circular references."
   },
   {
     type: "true/false",
-    question: "Transformers outperform RNN-based encoder-decoder models in parallel processing.",
+    question: "Kernel methods in SVM help transform non-linearly separable data into a higher-dimensional space where it becomes linearly separable.",
     answer: "True",
-    insight: "Transformers process input sequences in parallel, making them more efficient than sequential RNN-based models."
-  },
-
-  // Machine Learning Questions
-  {
-    type: "true/false",
-    question: "Overfitting occurs when a model performs well on training data but poorly on unseen data.",
-    answer: "True",
-    insight: "Overfitting means the model has learned patterns specific to training data and cannot generalize to new data."
+    insight: "Kernel functions project data into higher dimensions, allowing linear separability in complex cases."
   },
   {
     type: "multiple",
-    question: "Which technique is used to prevent overfitting?",
-    options: ["L1/L2 Regularization", "Data Augmentation", "Dropout", "All of the above"],
-    answer: "All of the above",
-    insight: "L1/L2 regularization, data augmentation, and dropout are all strategies used to reduce overfitting."
+    question: "Which method can be used to prevent overfitting in decision trees?",
+    options: ["Pruning", "Bagging", "Using deeper trees", "Both Pruning and Bagging"],
+    answer: "Both Pruning and Bagging",
+    insight: "Pruning reduces overfitting by limiting tree depth, while bagging (e.g., Random Forests) reduces variance."
   },
   {
     type: "true/false",
-    question: "Principal Component Analysis (PCA) is a supervised learning technique.",
+    question: "Python’s `map()` function returns a list in Python 3.x.",
     answer: "False",
-    insight: "PCA is an unsupervised dimensionality reduction technique that extracts important features from high-dimensional data."
-  },
-
-  // Deep Learning Questions
-  {
-    type: "true/false",
-    question: "A convolutional neural network (CNN) is primarily used for text data processing.",
-    answer: "False",
-    insight: "CNNs are mainly used for image processing, though they can also be applied to NLP tasks."
+    insight: "In Python 3.x, `map()` returns an iterator instead of a list. Use `list(map(...))` to convert it to a list."
   },
   {
     type: "multiple",
-    question: "Which activation function is commonly used in deep learning?",
-    options: ["ReLU", "Sigmoid", "Tanh", "All of the above"],
-    answer: "All of the above",
-    insight: "ReLU is popular in hidden layers, while Sigmoid and Tanh are often used in output layers of certain models."
-  },
-  {
-    type: "true/false",
-    question: "Batch Normalization speeds up training and stabilizes deep networks.",
-    answer: "True",
-    insight: "Batch normalization normalizes activations, helping deep networks converge faster and reducing internal covariate shift."
-  },
-
-  // Python Questions
-  {
-    type: "true/false",
-    question: "Python supports multiple inheritance.",
-    answer: "True",
-    insight: "Python allows a class to inherit from multiple classes, unlike some other OOP languages."
-  },
-  {
-    type: "multiple",
-    question: "Which Python library is used for data visualization?",
-    options: ["Matplotlib", "Seaborn", "Plotly", "All of the above"],
-    answer: "All of the above",
-    insight: "Matplotlib, Seaborn, and Plotly are widely used for creating visualizations in Python."
-  },
-  {
-    type: "true/false",
-    question: "In Python, `is` and `==` are interchangeable operators.",
-    answer: "False",
-    insight: "`is` checks for object identity (memory address), while `==` checks for value equality."
-  },
-  {
-    type: "multiple",
-    question: "Which function is used to read CSV files in pandas?",
-    options: ["pd.read_csv()", "pd.load_csv()", "pd.import_csv()", "pd.open_csv()"],
-    answer: "pd.read_csv()",
-    insight: "The `read_csv()` function in pandas is used to load CSV files into a DataFrame."
-  },
-  {
-    type: "true/false",
-    question: "Stop words are always removed in NLP tasks.",
-    answer: "False",
-    insight: "Some NLP tasks, like sentiment analysis, benefit from keeping stop words to preserve meaning."
-  },
-  {
-    type: "true/false",
-    question: "N-grams help capture contextual relationships in text.",
-    answer: "True",
-    insight: "N-grams model sequences of words to preserve context in NLP tasks like text generation."
-  },
-  {
-    type: "true/false",
-    question: "In Python, a tuple is mutable.",
-    answer: "False",
-    insight: "Tuples are immutable, meaning their elements cannot be changed after creation."
-  },
-  {
-    type: "multiple",
-    question: "Which Python module is commonly used for working with regular expressions?",
-    options: ["re", "regex", "string", "pandas"],
-    answer: "re",
-    insight: "The `re` module provides functions for pattern matching and working with regular expressions in Python."
-  },
-  {
-    type: "true/false",
-    question: "List comprehensions in Python are typically faster than using a for-loop for element-wise operations.",
-    answer: "True",
-    insight: "List comprehensions are optimized in Python and perform better than traditional loops in most cases."
-  },
-  {
-    type: "multiple",
-    question: "Which of the following is not a valid Python data type?",
-    options: ["set", "dict", "array", "list"],
-    answer: "array",
-    insight: "Python does not have a built-in `array` type; instead, lists and NumPy arrays are commonly used."
+    question: "What will be the output of the following Python snippet?\n```\nx = [1, 2, 3]\ny = x\ny.append(4)\nprint(x)\n```",
+    options: ["[1, 2, 3]", "[1, 2, 3, 4]", "Error", "None of the above"],
+    answer: "[1, 2, 3, 4]",
+    insight: "Lists are mutable and `y = x` assigns a reference, so changes to `y` also reflect in `x`."
   }
 ];
 
