@@ -155,162 +155,166 @@ header {
 const questions = [
 {
     type: "true/false",
-    question: "Word2Vec uses a one-hot encoding technique to represent words.",
-    answer: "False",
-    insight: "Word2Vec generates dense word embeddings based on context rather than one-hot encoding."
-  },
-  {
-    type: "multiple",
-    question: "Which of the following is NOT a common word embedding technique?",
-    options: ["GloVe", "TF-IDF", "FastText", "Word2Vec"],
-    answer: "TF-IDF",
-    insight: "TF-IDF is a statistical measure, whereas GloVe, FastText, and Word2Vec create dense vector representations."
-  },
-  {
-    type: "multiple",
-    question: "Which NLP task involves identifying proper nouns in text?",
-    options: ["Named Entity Recognition (NER)", "Sentiment Analysis", "Dependency Parsing", "POS Tagging"],
-    answer: "Named Entity Recognition (NER)",
-    insight: "NER detects entities such as names, locations, and organizations in text."
-  },
-  {
-    type: "true/false",
-    question: "Transformer models rely on recurrence to process sequential data.",
-    answer: "False",
-    insight: "Transformers use self-attention instead of recurrence, enabling efficient parallelization."
-  },
-  {
-    type: "multiple",
-    question: "Which of the following is NOT a loss function used in deep learning?",
-    options: ["Cross-Entropy Loss", "Mean Squared Error", "Softmax", "Huber Loss"],
-    answer: "Softmax",
-    insight: "Softmax is an activation function, whereas the others are loss functions used for optimization."
-  },
-  {
-    type: "multiple",
-    question: "Which of the following architectures is best suited for image segmentation?",
-    options: ["CNN", "ResNet", "U-Net", "VGG"],
-    answer: "U-Net",
-    insight: "U-Net is specifically designed for pixel-wise image segmentation tasks."
-  },
-  {
-    type: "true/false",
-    question: "Reinforcement learning is a type of supervised learning.",
-    answer: "False",
-    insight: "Reinforcement learning is an independent paradigm where agents learn from rewards rather than labeled data."
-  },
-  {
-    type: "true/false",
-    question: "Python uses indentation instead of curly braces to define code blocks.",
+    question: "List comprehension is generally faster than using a for loop in Python.",
     answer: "True",
-    insight: "Python relies on indentation (whitespace) to define code structure instead of braces like in C or Java."
+    insight: "List comprehensions are optimized in Python and run faster than traditional for loops."
   },
   {
     type: "multiple",
-    question: "Which of the following is NOT a built-in Python data type?",
-    options: ["List", "Dictionary", "Tuple", "Queue"],
-    answer: "Queue",
-    insight: "Queue is part of the `collections` module but not a built-in data type."
+    question: "Which of the following is NOT a valid Python data type?",
+    options: ["List", "Tuple", "Dictionary", "Graph"],
+    answer: "Graph",
+    insight: "Python does not have a built-in 'Graph' data type; graphs are implemented using libraries like NetworkX."
   },
   {
     type: "multiple",
-    question: "Which Python library is most commonly used for deep learning?",
-    options: ["TensorFlow", "NumPy", "Matplotlib", "Scikit-learn"],
-    answer: "TensorFlow",
-    insight: "TensorFlow is a popular deep learning framework, whereas NumPy and Scikit-learn focus on other ML tasks."
+    question: "Which of the following statements is true about decision trees?",
+    options: [
+      "They can be used for both classification and regression.",
+      "They are always better than linear models.",
+      "They require feature scaling.",
+      "They cannot handle categorical data."
+    ],
+    answer: "They can be used for both classification and regression.",
+    insight: "Decision trees can be used for both classification (decision boundaries) and regression (predicting continuous values)."
+  },
+  {
+    type: "multiple",
+    question: "Which technique is NOT used for handling imbalanced datasets?",
+    options: ["Oversampling", "Undersampling", "Feature scaling", "Synthetic data generation (SMOTE)"],
+    answer: "Feature scaling",
+    insight: "Feature scaling normalizes values but does not address class imbalance."
   },
   {
     type: "true/false",
-    question: "Lambda functions in Python are also called anonymous functions.",
-    answer: "True",
-    insight: "Lambda functions are single-expression functions without explicit names, used for short operations."
-  },
-  {
-    type: "multiple",
-    question: "What will `print(3 * 'Python')` output?",
-    options: ["PythonPythonPython", "Error", "Python * 3", "None"],
-    answer: "PythonPythonPython",
-    insight: "Python allows string multiplication, repeating the string three times."
-  },
-  {
-    type: "true/false",
-    question: "Python is a statically typed language.",
+    question: "Random Forest is more prone to overfitting than a single decision tree.",
     answer: "False",
-    insight: "Python is dynamically typed, meaning variable types are determined at runtime."
-  },
-  {
-    type: "true/false",
-    question: "Python lists and NumPy arrays have identical performance in numerical computations.",
-    answer: "False",
-    insight: "NumPy arrays are much faster than lists for numerical computations due to optimized memory storage and vectorized operations."
+    insight: "Random Forest reduces overfitting by aggregating multiple decision trees."
   },
   {
     type: "multiple",
-    question: "Which of the following is used to handle missing values in pandas?",
-    options: ["dropna()", "fillna()", "replace()", "All of the above"],
-    answer: "All of the above",
-    insight: "`dropna()` removes missing values, `fillna()` fills them with specified values, and `replace()` can modify missing values."
-  },
-  {
-    type: "multiple",
-    question: "Which built-in Python function returns the memory address of an object?",
-    options: ["id()", "type()", "dir()", "hash()"],
-    answer: "id()",
-    insight: "`id()` returns the memory address (identity) of an object."
-  },
-
-  // Machine Learning Questions
-  {
-    type: "true/false",
-    question: "Feature scaling is necessary for algorithms like k-NN and SVM.",
-    answer: "True",
-    insight: "Distance-based algorithms require feature scaling to ensure fair comparisons between variables."
-  },
-  {
-    type: "multiple",
-    question: "Which algorithm is used for dimensionality reduction?",
-    options: ["PCA", "Decision Trees", "k-Means", "Logistic Regression"],
-    answer: "PCA",
-    insight: "Principal Component Analysis (PCA) reduces dimensionality while preserving important variance in data."
-  },
-  {
-    type: "true/false",
-    question: "A high bias model underfits the data.",
-    answer: "True",
-    insight: "High bias means the model is too simple, leading to underfitting."
-  },
-  {
-    type: "multiple",
-    question: "Which activation function is best for binary classification?",
+    question: "Which activation function suffers from the vanishing gradient problem?",
     options: ["ReLU", "Sigmoid", "Softmax", "Tanh"],
     answer: "Sigmoid",
-    insight: "Sigmoid outputs values between 0 and 1, making it suitable for binary classification."
+    insight: "Sigmoid squashes values between 0 and 1, leading to extremely small gradients in deep networks."
   },
   {
     type: "true/false",
-    question: "In k-means clustering, the number of clusters must be specified beforehand.",
+    question: "Dropout is used to prevent overfitting in neural networks.",
     answer: "True",
-    insight: "The `k` value in k-means must be predetermined, though methods like the elbow method help find the best k."
+    insight: "Dropout randomly deactivates neurons during training to improve generalization."
   },
   {
     type: "multiple",
-    question: "Which metric is commonly used to evaluate regression models?",
-    options: ["Precision", "Recall", "Mean Squared Error (MSE)", "F1-score"],
-    answer: "Mean Squared Error (MSE)",
-    insight: "MSE measures the average squared difference between predicted and actual values in regression."
+    question: "Which of the following optimizers adapt learning rates per parameter?",
+    options: ["SGD", "Adam", "RMSprop", "Both Adam and RMSprop"],
+    answer: "Both Adam and RMSprop",
+    insight: "Adam and RMSprop adjust learning rates dynamically, making them suitable for deep networks."
   },
   {
     type: "true/false",
-    question: "Cross-validation helps reduce overfitting in machine learning models.",
+    question: "Batch normalization helps neural networks converge faster.",
     answer: "True",
-    insight: "Cross-validation partitions data into training and validation sets, improving model generalization."
+    insight: "Batch normalization normalizes activations within layers, reducing internal covariate shift and speeding up convergence."
+  },
+
+  // NLP Questions
+  {
+    type: "multiple",
+    question: "Which of the following models is NOT used for word embeddings?",
+    options: ["Word2Vec", "GloVe", "TF-IDF", "BERT"],
+    answer: "TF-IDF",
+    insight: "TF-IDF is a statistical measure, while Word2Vec, GloVe, and BERT generate vector embeddings."
+  },
+  {
+    type: "true/false",
+    question: "In an encoder-decoder architecture, the encoder compresses input sequences into a fixed-length vector.",
+    answer: "True",
+    insight: "Encoders map variable-length input sequences into a fixed-size context vector before the decoder generates output."
   },
   {
     type: "multiple",
-    question: "Which of the following is NOT a supervised learning algorithm?",
-    options: ["Linear Regression", "Random Forest", "K-Means", "SVM"],
-    answer: "K-Means",
-    insight: "K-Means is an unsupervised clustering algorithm."
+    question: "Which NLP task does the BERT model perform best?",
+    options: ["Text classification", "Sequence labeling", "Machine translation", "All of the above"],
+    answer: "All of the above",
+    insight: "BERT excels at various NLP tasks due to its bidirectional contextual understanding."
+  },
+  {
+    type: "true/false",
+    question: "Transformers use recurrence to process sequential data.",
+    answer: "False",
+    insight: "Transformers rely on self-attention rather than recurrence, allowing for parallelization."
+  },
+  {
+    type: "multiple",
+    question: "Which technique is commonly used for text summarization?",
+    options: ["Latent Semantic Analysis (LSA)", "Seq2Seq models", "TF-IDF", "All of the above"],
+    answer: "All of the above",
+    insight: "LSA, Seq2Seq, and TF-IDF can be used for different types of text summarization."
+  },
+  {
+    type: "multiple",
+    question: "Which NLP model is primarily used for machine translation?",
+    options: ["BERT", "GPT-3", "Seq2Seq", "TF-IDF"],
+    answer: "Seq2Seq",
+    insight: "Seq2Seq models are widely used for machine translation, enabling the conversion of input sequences into meaningful output sequences."
+  },
+  {
+    type: "true/false",
+    question: "Does the Python library 'spaCy' provide pre-trained word vectors?",
+    answer: "True",
+    insight: "spaCy offers pre-trained word vectors for efficient NLP tasks."
+  },
+  {
+    type: "multiple",
+    question: "Which Python library is widely used for deep learning?",
+    options: ["Scikit-learn", "TensorFlow", "NLTK", "Matplotlib"],
+    answer: "TensorFlow",
+    insight: "TensorFlow is a leading deep learning framework, while Scikit-learn is primarily used for traditional machine learning."
+  },
+  {
+    type: "true/false",
+    question: "Is logistic regression a classification algorithm?",
+    answer: "True",
+    insight: "Despite its name, logistic regression is used for classification tasks, such as binary and multi-class classification."
+  },
+  {
+    type: "multiple",
+    question: "Which method is commonly used for Named Entity Recognition (NER) tasks?",
+    options: ["Conditional Random Fields (CRF)", "BERT", "Recurrent Neural Networks (RNNs)", "All of the above"],
+    answer: "All of the above",
+    insight: "NER can be tackled using CRFs, transformer models like BERT, and RNN-based architectures."
+  },
+  {
+    type: "true/false",
+    question: "In Natural Language Processing, stemming and lemmatization serve the same purpose.",
+    answer: "False",
+    insight: "Stemming reduces words to their root by stripping suffixes, whereas lemmatization maps words to their dictionary form."
+  },
+  {
+    type: "true/false",
+    question: "A softmax activation function is typically used in the output layer of a multi-class classification model.",
+    answer: "True",
+    insight: "Softmax converts raw scores into probabilities, making it ideal for multi-class classification."
+  },
+  {
+    type: "multiple",
+    question: "Which of the following is NOT an activation function?",
+    options: ["ReLU", "Sigmoid", "Adam", "Tanh"],
+    answer: "Adam",
+    insight: "Adam is an optimization algorithm, whereas ReLU, Sigmoid, and Tanh are activation functions."
+  },
+  {
+    type: "true/false",
+    question: "Python supports both functional and object-oriented programming paradigms.",
+    answer: "True",
+    insight: "Python is a multi-paradigm language that allows both functional and object-oriented programming styles."
+  },
+  {
+    type: "true/false",
+    question: "A pre-trained BERT model can be fine-tuned for downstream NLP tasks.",
+    answer: "True",
+    insight: "BERT can be fine-tuned on specific NLP tasks like sentiment analysis, question answering, and text classification."
   },
 
 ];
